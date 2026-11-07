@@ -1,4 +1,5 @@
 import type { Exercise, Machine } from '../domain/schema';
+import { exerciseVideos } from './videos';
 
 export const sources = {
   allegro: { title: 'Balanced Body · Manual Allegro, edición 2024-05', url: 'https://s3.amazonaws.com/s3.pilates.com/resources/10896_AllegroA1b_CE_CompleteManual_web_5_9_24.pdf', checked: '2026-11-07' },
@@ -95,9 +96,10 @@ export const preparation: Exercise[] = [
   { ...floorBase, id: 'ankles', name: 'Movilidad de tobillos', en: 'Ankle preparation', primary: ['Pantorrillas', 'Movilidad'], bilateral: true, steps: ['Sentado, alterna punta y talón.', 'Repite con el otro pie sin forzar.'], avoidTags: ['tobillo'] },
   { ...floorBase, id: 'release', name: 'Vuelta a la calma', en: 'Cool down', primary: ['Movilidad'], steps: ['Regresa a una postura estable fuera del equipo.', 'Deja que la respiración recupere su ritmo.'] }
 ];
+for(const exercise of exercises)if(exerciseVideos[exercise.id])exercise.video=exerciseVideos[exercise.id];
 export const allExercises = [...exercises, ...preparation];
 export function exerciseById(id: string) { const exercise = allExercises.find(e => e.id === id); if (!exercise) throw new Error(`Ejercicio desconocido: ${id}`); return exercise; }
-export const manufacturers = ['Balanced Body', 'Merrithew / STOTT Pilates', 'Peak Pilates', 'Align-Pilates', 'BASI Systems', 'Gratz', 'Flexia', 'Elina Pilates', 'AeroPilates', 'Clásico', 'Otro'];
+export const manufacturers = ['IRONSIDE', 'Balanced Body', 'Merrithew / STOTT Pilates', 'Peak Pilates', 'Align-Pilates', 'BASI Systems', 'Gratz', 'Flexia', 'Elina Pilates', 'AeroPilates', 'Clásico', 'Otro'];
 export const accessories = ['Correas', 'Caja', 'Aro', 'Pelota', 'Jumpboard', 'Banda'];
 export function allegro2Machine(): Machine {
   return { id: crypto.randomUUID(), revision: crypto.randomUUID(), name: 'Mi Allegro 2', manufacturer: 'Balanced Body', model: 'Allegro 2 · Signature Springs',
@@ -112,4 +114,11 @@ export function allegro2Machine(): Machine {
 export function customMachine(): Machine {
   return { ...allegro2Machine(), name: 'Mi Reformer', manufacturer: 'Otro', model: 'Personalizado', source: '', validation: 'usuario',
     springs: [{ id: crypto.randomUUID(), label: 'Resorte 1', color: '#7b818c', count: 1, relative: 'sin verificar', initialN: null, stiffnessNm: null }], accessories: [] };
+}
+export function ironsideOakMachine(): Machine {
+  return { ...customMachine(), name:'Mi IRONSIDE Oak', manufacturer:'IRONSIDE', model:'Reformer Madera Oak',
+    springs:[], accessories:['Correas','Caja','Jumpboard'],
+    source:'https://www.ironside.com.mx/products/reformer-madera-oak-ironside-pilates',
+    notes:'Modelo identificado en la ficha del fabricante. Marco de roble, 227 × 67 × 38 cm. La ficha no publica cantidades ni resistencia de resortes por color; el inventario debe aportarlo el usuario.',
+    validation:'usuario', inventoryConfirmed:false, settings:{} };
 }

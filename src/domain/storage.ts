@@ -22,7 +22,7 @@ export function validateRoutine(value: unknown): Routine {
 export function validateState(value: unknown): AppState {
   const s = stateSchema.parse(value);
   if (!unique(s.machines.map(m=>m.id)) || !unique(s.sessions.map(x=>x.id))) throw new Error('Hay identificadores duplicados en el respaldo.');
-  if (s.activeMachineId && !s.machines.some(m=>m.id===s.activeMachineId)) throw new Error('La máquina activa no existe.');
+  if (!s.machines.some(m=>m.id===s.activeMachineId)) s.activeMachineId=s.machines[0]?.id||null;
   for (const m of s.machines) if (!unique(m.springs.map(x=>x.id))) throw new Error('Inventario duplicado.');
   if (s.draft) validateRoutine(s.draft);
   for (const session of [...s.sessions, ...(s.activeSession ? [s.activeSession] : [])]) {

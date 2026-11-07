@@ -1,14 +1,14 @@
 # Limitaciones y hoja de ruta
 
-## Entregado en 0.1.0
+## Entregado en 0.1.1
 
 Creador local, editor, biblioteca pequeña, múltiples equipos, validación de inventario/configuraciones, sesión real, temporizador, historial, estadísticas básicas, respaldos y PWA. Interfaz en español y nombres de ejercicios en inglés con selector en Biblioteca. No se afirma que todas las etapas del prompt maestro estén completas.
 
 ## Límites concretos
 
 1. Un borrador local de trabajo. No hay biblioteca personal con cuenta, OAuth, magic links ni sincronización. “Guardar rutina” explica la limitación y ofrece exportar. No hay topes de exportación ni de historial aparte de almacenamiento/validación de importación; el esquema de respaldo acepta hasta 10,000 sesiones por archivo.
-2. No hay video verificado ni reproductor multimedia. Las fichas ofrecen instrucciones y esquemas de posición; la técnica completa debe aprenderse con un instructor.
-3. Inventario estándar documentado para un modelo/configuración de Allegro 2. Otros equipos se registran con procedencia de usuario. Ningún modelo recibe una receta automática de resortes.
+2. Once de trece fichas tienen videos públicos de Align-Pilates o Pilates Anytime, insertados con el reproductor autorizado. Tríceps sentado y Hundred con rodillas flexionadas mantienen el tutorial específico pendiente. El audio es en inglés y los subtítulos dependen del autor. Las cargas del video no se trasladan al equipo del usuario.
+3. Inventario estándar documentado para Allegro 2 y modelo identificado IRONSIDE Madera Oak. El inventario y resistencia del IRONSIDE se aportan por usuario; la página del fabricante no los detalla. Ningún modelo recibe una receta automática de resortes.
 4. El catálogo no cubre todos los grupos con la misma profundidad. Puede producir sesiones más cortas que la solicitud, informando la duración real. No rellena con ejercicios inventados.
 5. El analizador español interpreta un conjunto explícito de patrones, no toda expresión natural. No infiere diagnósticos ni restricciones clínicas. Las modificaciones se resuelven conservadoramente.
 6. El orden reduce cambios de posición y puede agrupar resortes confirmados; no constituye un optimizador biomecánico global de barra, correas y accesorios.

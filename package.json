@@ -1,7 +1,7 @@
 {
   "name": "reformer",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
@@ -19,7 +19,10 @@
     "react-dom": "^19.2.0",
     "zod": "^4.1.0"
   },
-  "overrides": { "glob": "^14.0.4", "minimatch": "^11.0.5" },
+  "overrides": {
+    "glob": "^14.0.4",
+    "minimatch": "^11.0.5"
+  },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.2",
     "@playwright/test": "^1.56.0",

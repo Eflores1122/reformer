@@ -110,11 +110,20 @@ export function replaceExercise(routine: Routine, itemId: string, profile: Profi
   return { ...routine, items: routine.items.map(i => i.id === itemId ? { ...i, exerciseId: e.id, sides: e.bilateral ? 2 : 1, configuration: structuredClone(machine?.settings[e.id] || null) } : i) };
 }
 export function trainingIssues(routine: Routine, machine?: Machine): string[] {
-  return [...new Set(routine.items.flatMap(i => {
+  return [...new Set(routine.items.flatMap(i => exerciseTrainingIssues(i,machine)))];
+}
+export function exerciseTrainingIssues(i:RoutineItem,machine?:Machine):string[] {
     const e = exerciseById(i.exerciseId);
     if (e.equipment === 'suelo') return [];
     return [...validateConfiguration(machine, i.configuration), ...e.accessories.filter(a => !machine?.accessories.includes(a)).map(a => `Falta accesorio: ${a}.`)];
-  }))];
+}
+export function assignMachine(routine:Routine,machine:Machine):Routine {
+  return {...routine,machineId:machine.id,items:routine.items.map(item=>{
+    if(exerciseById(item.exerciseId).equipment==='suelo')return item;
+    const current=item.configuration;
+    const configuration=current?.machineId===machine.id&&current.machineRevision===machine.revision?current:machine.settings[item.exerciseId]||null;
+    return {...item,configuration:structuredClone(configuration)};
+  })};
 }
 export function addExercise(routine: Routine, exerciseId: string, machine?: Machine) {
   const e = exerciseById(exerciseId);

@@ -16,7 +16,22 @@ Los ejercicios de preparación fuera del aparato son propuestas suaves originale
 - Nivel, posición y accesorios tienen IDs y descripciones propias. Se excluyen variantes inestables del generador principiante.
 - Músculos principales y secundarios se distinguen. No se clasifica Chest Expansion como pectoral por su nombre; esa ficha no está incluida.
 - No se agregaron Frog, Chest Press o Seated Row sin una revisión suficiente para esta primera biblioteca. El catálogo prioriza trazabilidad sobre cantidad.
-- No hay videos verificados en 0.1.0. Todas las fichas muestran ese estado y conservan instrucciones. No se descargó ni redistribuyó audiovisual de terceros.
+- En 0.1.1 hay once fichas con demostraciones publicadas por Align-Pilates o Pilates Anytime. Se usa el embed de YouTube, sin descargar ni redistribuir los videos. Las dos variantes sin tutorial específico conservan instrucciones y un estado pendiente.
 - “Documentado” describe la existencia de una fuente técnica; no significa aprobación clínica, certificación del producto o adecuación individual. Falta una revisión independiente por instructor cualificado.
 
 Para ampliar la biblioteca, registrar fuente concreta, fecha, licencia del audiovisual, modelo y revisión de configuración. Una receta de resortes no puede heredarse por coincidencia de color o marca.
+
+## IRONSIDE y demostraciones, 0.1.1
+
+[IRONSIDE Reformer Madera Oak](https://www.ironside.com.mx/products/reformer-madera-oak-ironside-pilates): identidad, dimensiones y accesorios de la ficha oficial. La página no publica cantidad de resortes ni fuerza por color. No se deduce equivalencia con otras marcas ni se convierte una observación de un usuario en inventario estándar del modelo.
+
+| Publicación del autor | Uso |
+| --- | --- |
+| [Align-Pilates Beginner Workout](https://www.youtube.com/watch?v=ciR7LA23ooY) | Capítulos del autor: Footwork 1:47, puente 7:23, descenso de piernas 10:31, Hugs 19:20 y Offerings 19:58. Los fragmentos se acotan al siguiente capítulo |
+| [Running — Pilates Anytime](https://www.youtube.com/watch?v=NpJYV2iVfZA) | Running alternado |
+| [Leg Circles — Align-Pilates/Mbodies](https://align-pilates.com/videos/leg-circles-feet-straps-pilates-reformer/) | Página del fabricante y su video xmWbq-pcSc4 |
+| [Bicep Curls — Align-Pilates/Mbodies](https://align-pilates.com/videos/bicep-curls-hands-straps-pilates-reformer/) | Solo variante sentada erguida, 0:09–1:19; no se extiende a la variante de rodillas |
+| [Pelvic Lift — Pilates Anytime](https://www.youtube.com/watch?v=FLVpQ2P_9QA) | Elevación pélvica |
+| [Pulling Straps — Pilates Anytime](https://www.youtube.com/watch?v=Zic_h-K3gSI) | Tracción con caja; el tutorial incluye también la segunda variante |
+
+Se verificaron la atribución y respuesta oEmbed pública el 2026-11-07. Los controles y disponibilidad dependen de YouTube; siempre se ofrece enlace de origen y texto. La reproducción no necesita registrar una máquina. Los videos muestran otros fabricantes y sus cargas no se copian a IRONSIDE.

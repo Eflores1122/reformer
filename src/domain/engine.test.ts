@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { allExercises, allegro2Machine, customMachine, exerciseById } from '../data/catalog';
-import { addExercise, generateRoutine, itemDuration, parseRequest, replaceExercise, routineDuration, trainingIssues } from './engine';
+import { allExercises, allegro2Machine, customMachine, exerciseById, ironsideOakMachine } from '../data/catalog';
+import { addExercise, assignMachine, exerciseTrainingIssues, generateRoutine, itemDuration, parseRequest, replaceExercise, routineDuration, trainingIssues } from './engine';
 import { defaultProfile, type Configuration, type Routine, type RoutineItem } from './schema';
 import { springDifference, springTensionN, validateConfiguration } from './springs';
 import { advanceSegment, clockSeconds, completeSet, completedExercises, createSession, finishSession, pauseSession, runSession, skipExercise } from './session';
@@ -19,9 +19,11 @@ describe('Analizador y generador determinista',()=>{
   it('recalcula la duración al cambiar series y contempla ambos lados',()=>{const r=shortRoutine();const i=r.items[0];const original=routineDuration(r);i.sets++;expect(routineDuration(r)).toBe(original+i.seconds+i.rest);const bilateral:RoutineItem={...i,sets:2,sides:2,seconds:40,rest:15,transition:20};expect(itemDuration(bilateral)).toBe(225);});
   it('sustituye únicamente un movimiento sin perder la sesión',()=>{const r=generateRoutine('Cuerpo completo',defaultProfile);const item=r.items.find(i=>i.phase==='Práctica')!;const updated=replaceExercise(r,item.id,defaultProfile);expect(updated.items.find(i=>i.id===item.id)?.exerciseId).not.toBe(item.exerciseId);expect(updated.items.filter(i=>i.id!==item.id)).toEqual(r.items.filter(i=>i.id!==item.id));});
   it('añade movimientos antes del enfriamiento',()=>{const r=shortRoutine();r.items.at(-1)!.phase='Vuelta a la calma';const a=addExercise(r,'footwork-heels');expect(a.items.at(-1)?.phase).toBe('Vuelta a la calma');expect(a.items.at(-2)?.exerciseId).toBe('footwork-heels');});
-  it('conserva instrucciones cuando no hay video',()=>{expect(allExercises.every(e=>e.steps.length>0&&e.video.status==='sin demostración')).toBe(true);});
+  it('conserva instrucciones cuando no hay video',()=>{expect(allExercises.every(e=>e.steps.length>0)).toBe(true);expect(allExercises.filter(e=>e.video.status==='enlace verificado')).toHaveLength(11);expect(exerciseById('triceps').video.status).toBe('sin demostración');});
 });
 describe('Compatibilidad de resortes',()=>{
+  it('registra IRONSIDE sin inventar resistencia ni inventario del fabricante',()=>{const m=ironsideOakMachine();expect(m.manufacturer).toBe('IRONSIDE');expect(m.springs).toEqual([]);expect(m.inventoryConfirmed).toBe(false);expect(m.accessories).toContain('Correas');});
+  it('asocia un borrador previo al equipo nuevo sin trasladar cargas',()=>{const r=generateRoutine('Pecho y glúteos 25 minutos',defaultProfile);const m=ironsideOakMachine();const assigned=assignMachine(r,m);expect(assigned.machineId).toBe(m.id);expect(assigned.items.map(i=>i.id)).toEqual(r.items.map(i=>i.id));expect(assigned.items.filter(i=>i.phase==='Práctica').every(i=>i.configuration===null)).toBe(true);expect(exerciseTrainingIssues(assigned.items[0],m)).toEqual([]);expect(trainingIssues(assigned,m).length).toBeGreaterThan(0);});
   it('rechaza 3 rojos cuando solo hay 2',()=>{const{m,c}=configured();m.springs[0].count=2;c.springs['bb-red']=3;expect(validateConfiguration(m,c).join(' ')).toContain('solicitas 3, tienes 2');});
   it('no aplica una configuración de Balanced Body a Merrithew',()=>{const{c}=configured();const other=customMachine();other.manufacturer='Merrithew / STOTT Pilates';other.inventoryConfirmed=true;expect(validateConfiguration(other,c)).toContain('Falta la configuración específica para esta máquina.');});
   it('rechaza resortes ajenos y carro sin resortes',()=>{const{m,c}=configured();expect(validateConfiguration(m,{...c,springs:{alien:1}}).join()).toContain('no pertenece');expect(validateConfiguration(m,{...c,springs:{}}).join()).toContain('sin resortes');});

@@ -7,12 +7,12 @@ Una aplicación abierta para crear, editar y seguir una práctica de Pilates Ref
 
 ## Estado de esta versión
 
-Primera versión funcional, 0.1.0. La primera pantalla es el creador de rutinas. Puedes explorar, generar propuestas, editar y entrenar sin cuenta. El análisis de solicitudes se ejecuta localmente mediante reglas en español.
+Versión funcional 0.1.1. La primera pantalla es el creador de rutinas. Puedes explorar, generar propuestas, editar y entrenar sin cuenta. El análisis de solicitudes se ejecuta localmente mediante reglas en español.
 
 - Generador sensible a nivel, grupos, tiempo, equipo, accesorios y exclusiones; preparación y vuelta a la calma.
 - Editor con series, repeticiones, tiempos, descansos, transiciones, orden, notas, sustitución, deshacer, rehacer e impresión/PDF del navegador.
-- Trece movimientos de Reformer documentados, cinco preparaciones suaves, instrucciones y fuentes. No se presentan videos inexistentes ni ilustraciones como demostraciones completas.
-- Múltiples máquinas con inventarios separados. Preset documentado de Allegro 2 con Signature Springs y registro personalizado para otros modelos.
+- Trece movimientos de Reformer documentados, cinco preparaciones suaves, instrucciones y fuentes. Once fichas incluyen demostraciones públicas de sus autores; dos mantienen el tutorial pendiente. Los reproductores se cargan solo al elegir reproducir.
+- Múltiples máquinas con inventarios separados. Perfiles de IRONSIDE Reformer Madera Oak, Allegro 2 con Signature Springs y modelos personalizados. El inventario del IRONSIDE se registra con datos del usuario porque el fabricante no publica cantidades ni fuerzas por color.
 - Configuraciones por máquina y ejercicio, cantidades físicas, confirmación del usuario e invalidación al cambiar el equipo. No hay prescripción automática de colores ni equivalencias en kg.
 - Entrenamiento con reloj por marcas temporales, pausa, series reales, repeticiones, esfuerzo, control, configuración efectiva, omisiones y reanudación.
 - Historial, actividad semanal, distribución muscular y una regla transparente de progresión sin cambios automáticos de resortes.
@@ -21,7 +21,7 @@ Primera versión funcional, 0.1.0. La primera pantalla es el creador de rutinas.
 
 El borrador y los registros son locales. Siguiendo la directiva guest-first, “Guardar rutina” explica que la biblioteca de cuenta y la sincronización **aún no están configuradas** y permite exportar. No hay un registro simulado ni proveedores OAuth sin configurar. Se pueden exportar tantas rutinas como se desee; esta versión conserva un borrador de trabajo a la vez.
 
-La documentación del movimiento no equivale a validación individual. Antes de entrenar en el Reformer debes confirmar inventario y ajustes aprendidos con un instructor. Las necesidades de modificación se filtran conservadoramente, sin diagnosticar ni prescribir rehabilitación.
+La documentación del movimiento no equivale a validación individual. Puedes entrar al entrenamiento y comenzar la preparación sin completar todos los ajustes. Antes de iniciar cada movimiento en el Reformer debes confirmar su inventario y ajustes aprendidos con un instructor. Las necesidades de modificación se filtran conservadoramente, sin diagnosticar ni prescribir rehabilitación.
 
 ## Desarrollo
 

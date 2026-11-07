@@ -22,7 +22,7 @@ export const configurationSchema = z.object({
 export type Configuration = z.infer<typeof configurationSchema>;
 export const machineSchema = z.object({
   id, revision: z.string().min(1), name: z.string().min(1).max(80), manufacturer: z.string().min(1).max(80), model: z.string().min(1).max(120),
-  generation: text, type: text, springs: z.array(springSchema).min(1).max(12), accessories: z.array(z.string().max(80)).max(20),
+  generation: text, type: text, springs: z.array(springSchema).max(12), accessories: z.array(z.string().max(80)).max(20),
   springbar: text, pulleys: text, footbar: text, notes: text, source: text,
   checkedAt: z.iso.date(), inventoryConfirmed: z.boolean(), validation: z.enum(['inventario documentado', 'usuario']),
   settings: z.record(z.string(), configurationSchema)
@@ -88,5 +88,5 @@ export type Exercise = {
   cues: string[]; errors: string[]; easier: string; harder: string;
   precautions: string[]; avoidTags: string[]; sourceId: string; sourcePage?: number;
   review: 'documentado' | 'pendiente de revisión profesional';
-  video: { status: 'sin demostración' | 'enlace verificado'; url?: string; attribution?: string };
+  video: { status: 'sin demostración' | 'enlace verificado'; url?: string; attribution?: string; youtubeId?: string; start?: number; end?: number; title?: string; checkedAt?: string; note?: string };
 };
