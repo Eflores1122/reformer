@@ -1,0 +1,15 @@
+import { describe, expect, it } from 'vitest';
+import { allegro2Machine, customMachine } from '../data/catalog';
+import { generateRoutine } from './engine';
+import { defaultProfile, initialState } from './schema';
+import { backupJSON, historyCSV, loadState, parseImport, routineJSON, saveState } from './storage';
+import { completeSet, createSession, finishSession, runSession } from './session';
+
+describe('IndexedDB, importación y respaldos',()=>{
+  it('conserva 20 borradores sucesivos y permite 20 archivos de rutina sin límite artificial de biblioteca',async()=>{for(let i=0;i<20;i++){const draft=generateRoutine('Pecho 25 minutos',defaultProfile);draft.title=`Borrador ${i}`;await saveState({...structuredClone(initialState),draft});expect((await loadState()).draft?.title).toBe(`Borrador ${i}`);expect(parseImport(routineJSON(draft)).type).toBe('rutina');}});
+  it('exporta, elimina y restaura los registros completos',async()=>{const r=generateRoutine('Movilidad suave',defaultProfile);let session=runSession(createSession(r),1000);session=completeSet(session,{repsActual:0,rpe:4,technique:'controlada',notes:'Control'},4000);session=finishSession(session);const original={...structuredClone(initialState),sessions:[session]};const backup=backupJSON(original);await saveState(structuredClone(initialState));expect((await loadState()).sessions).toHaveLength(0);const restored=parseImport(backup);expect(restored.type).toBe('respaldo');if(restored.type==='respaldo'){await saveState(restored.state);expect((await loadState()).sessions[0].logs[0].notes).toBe('Control');}});
+  it('conserva dos equipos separados',async()=>{const a=allegro2Machine();const b=customMachine();b.manufacturer='Merrithew / STOTT Pilates';await saveState({...structuredClone(initialState),machines:[a,b],activeMachineId:b.id});const s=await loadState();expect(s.machines).toHaveLength(2);expect(s.machines[1].springs[0].id).not.toBe(s.machines[0].springs[0].id);expect(s.activeMachineId).toBe(b.id);});
+  it('rechaza datos externos inválidos sin sobrescribir los existentes',async()=>{await saveState({...structuredClone(initialState),profile:{...defaultProfile,alias:'Conservar'}});expect(()=>parseImport('{bad json')).toThrow();expect(()=>parseImport(JSON.stringify({format:'reformer-backup',version:99,state:initialState}))).toThrow();const bad=structuredClone(initialState);bad.draft=generateRoutine('Pecho',defaultProfile);bad.draft.items[0].exerciseId='inexistente';expect(()=>parseImport(backupJSON(bad))).toThrow();expect((await loadState()).profile.alias).toBe('Conservar');});
+  it('rechaza relaciones de sesión y duplicados inválidos',()=>{const s=structuredClone(initialState);const machine=customMachine();s.machines=[machine,machine];expect(()=>parseImport(backupJSON(s))).toThrow();});
+  it('escapa fórmulas al exportar CSV',()=>{const r=generateRoutine('Movilidad',defaultProfile);let session=runSession(createSession(r),1000);session=completeSet(session,{repsActual:0,rpe:2,technique:'controlada',notes:'=HYPERLINK("x")'},2000);const csv=historyCSV({...structuredClone(initialState),sessions:[finishSession(session)]});expect(csv).toContain("'=HYPERLINK");});
+});
