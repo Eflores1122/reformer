@@ -17,3 +17,5 @@ El código original y los SVG de REFORMER son MIT. Los manuales enlazados conser
 Las licencias de cada versión se conservan en sus paquetes y en el lockfile de dependencias. OFL se aplica a las fuentes, no cambia la licencia del código. MPL se limita a la herramienta de análisis de pruebas. No se modificó código de dependencias con copyleft.
 
 Las versiones se fijan mediante `package-lock.json`. Se actualizan `glob` y `minimatch` transitivos para evitar avisos moderados de herramientas de compilación. La revisión de dependencias puede identificar avisos bajos sin corrección compatible en herramientas de desarrollo; consultar `docs/PRUEBAS.md` para el estado verificado en este checkpoint.
+
+Los textos originales de las licencias de componentes distribuidos están incluidos en [`public/LICENSES.txt`](public/LICENSES.txt) y se publican con la aplicación.
