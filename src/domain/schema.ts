@@ -6,6 +6,7 @@ export const muscles = ['Pecho', 'Glúteos', 'Cuádriceps', 'Isquiotibiales', 'P
 export const muscleSchema = z.enum(muscles);
 export type Muscle = z.infer<typeof muscleSchema>;
 const id = z.string().min(1).max(160);
+const timestamp = z.iso.datetime({offset:true});
 const text = z.string().max(3000);
 export const springSchema = z.object({
   id, label: z.string().min(1).max(80), color: z.string().regex(/^#[0-9a-fA-F]{6}$/),
@@ -23,7 +24,7 @@ export const machineSchema = z.object({
   id, revision: z.string().min(1), name: z.string().min(1).max(80), manufacturer: z.string().min(1).max(80), model: z.string().min(1).max(120),
   generation: text, type: text, springs: z.array(springSchema).min(1).max(12), accessories: z.array(z.string().max(80)).max(20),
   springbar: text, pulleys: text, footbar: text, notes: text, source: text,
-  checkedAt: z.string(), inventoryConfirmed: z.boolean(), validation: z.enum(['inventario documentado', 'usuario']),
+  checkedAt: z.iso.date(), inventoryConfirmed: z.boolean(), validation: z.enum(['inventario documentado', 'usuario']),
   settings: z.record(z.string(), configurationSchema)
 });
 export type Machine = z.infer<typeof machineSchema>;
@@ -49,21 +50,21 @@ export const itemSchema = z.object({
 });
 export type RoutineItem = z.infer<typeof itemSchema>;
 export const routineSchema = z.object({
-  id, title: z.string().min(1).max(160), request: text, createdAt: z.string(),
+  id, title: z.string().min(1).max(160), request: text, createdAt: timestamp,
   machineId: id.nullable(), level: levelSchema, targets: z.array(muscleSchema).max(16),
   minutesRequested: z.number().min(10).max(60), warnings: z.array(text).max(30), items: z.array(itemSchema).max(100)
 });
 export type Routine = z.infer<typeof routineSchema>;
 export const setLogSchema = z.object({
   id, itemId: id, exerciseId: id, set: z.number().int().min(1).max(6), side: z.number().int().min(1).max(2),
-  completedAt: z.string(), repsPlanned: z.number().int().nonnegative(), repsActual: z.number().int().min(0).max(100),
+  completedAt: timestamp, repsPlanned: z.number().int().nonnegative(), repsActual: z.number().int().min(0).max(100),
   secondsPlanned: z.number().nonnegative(), secondsActual: z.number().nonnegative(), restActual: z.number().nonnegative(),
   rpe: z.number().int().min(1).max(10), technique: z.enum(['controlada', 'difícil', 'molestia']), notes: text,
   configuration: configurationSchema.nullable()
 });
 export type SetLog = z.infer<typeof setLogSchema>;
 export const sessionSchema = z.object({
-  id, routine: routineSchema, machineId: id.nullable(), machineSnapshot: machineSchema.nullable().default(null), startedAt: z.string(), finishedAt: z.string().nullable(),
+  id, routine: routineSchema, machineId: id.nullable(), machineSnapshot: machineSchema.nullable().default(null), startedAt: timestamp, finishedAt: timestamp.nullable(),
   status: z.enum(['activa', 'incompleta', 'completa']), index: z.number().int().nonnegative(),
   set: z.number().int().min(1).max(6), side: z.number().int().min(1).max(2), phase: z.enum(['ejercicio', 'descanso', 'transición']),
   running: z.boolean(), elapsed: z.number().nonnegative(), startedTick: z.number().nullable(),

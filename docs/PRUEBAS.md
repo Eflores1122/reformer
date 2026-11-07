@@ -1,6 +1,6 @@
 # Validación
 
-Checkpoint inicial: 2026-11-07. Node 26.8.2 en macOS; CI configurado en Node 24. Compilación estricta TypeScript + Vite realizada. Vitest: **30 pruebas pasadas**. Playwright/Chromium: **16 escenarios pasados**, ocho flujos en escritorio y ocho con emulación iPhone 13. El workflow ejecuta ambas suites antes de publicar.
+Checkpoint inicial: 2026-11-07. Node 26.8.2 en macOS; CI configurado en Node 24. Compilación estricta TypeScript + Vite realizada. Vitest: **31 pruebas pasadas**. Playwright/Chromium: **16 escenarios pasados**, ocho flujos en escritorio y ocho con emulación iPhone 13. El workflow ejecuta ambas suites antes de publicar.
 
 Los escenarios de configuración usan datos de prueba para comprobar controles; no son recomendaciones de resistencia.
 
@@ -22,7 +22,7 @@ Los escenarios de configuración usan datos de prueba para comprobar controles; 
 | 14. Móvil, tableta, escritorio | Flujos en desktop y iPhone; sin overflow a 375×812, 768×1024 y 1024×768; controles principales accesibles |
 | 15. Subdirectorio Pages/PWA | Base `/reformer/`, hash routes, build y precarga comprobados. Verificación pública adicional al concluir el despliegue |
 
-Otras coberturas: objetivos distintos, negaciones, límite de nivel, accesorios, músculos secundarios, preparación específica, restricciones conservadoras, sustitución aislada, reloj en segundo plano/pausa, doble registro, descanso real, imports inválidos, IDs duplicados y protección de CSV ante fórmulas.
+Otras coberturas: objetivos distintos, negaciones, límite de nivel, accesorios, músculos secundarios, preparación específica, restricciones conservadoras, sustitución aislada, reloj en segundo plano/pausa, doble registro, descanso real, imports inválidos, fechas inválidas, IDs duplicados y protección de CSV ante fórmulas.
 
 ## Accesibilidad y revisión visual
 
