@@ -17,7 +17,7 @@ Los ejercicios de preparación fuera del aparato son propuestas suaves originale
 - Nivel, posición y accesorios tienen IDs y descripciones propias. Se excluyen variantes inestables del generador principiante.
 - Músculos principales y secundarios se distinguen. No se clasifica Chest Expansion como pectoral por su nombre; esa ficha no está incluida.
 - No se agregaron Frog, Chest Press o Seated Row sin una revisión suficiente para esta primera biblioteca. El catálogo prioriza trazabilidad sobre cantidad.
-- En 0.1.1 hay once fichas con demostraciones publicadas por Align-Pilates o Pilates Anytime. Se usa el embed de YouTube, sin descargar ni redistribuir los videos. Las dos variantes sin tutorial específico conservan instrucciones y un estado pendiente.
+- En 0.1.3 las trece fichas tienen un embed de YouTube, sin descargar ni redistribuir el archivo. Extensión de brazos sentado usa [Seated Arm Work](https://www.youtube.com/watch?v=Erl0o3VseOU) de Balanced Body. Hundred con rodillas flexionadas usa [The Hundreds Series](https://www.youtube.com/watch?v=akFkx5vzXgs) de Align-Pilates, capítulos Prep 1, Prep 2 y The Hundred (0:09 a 2:53). El detalle y la comprobación oEmbed están en [CREDITS.md](../CREDITS.md).
 - “Documentado” describe la existencia de una fuente técnica; no significa aprobación clínica, certificación del producto o adecuación individual. Falta una revisión independiente por instructor cualificado.
 
 Para ampliar la biblioteca, registrar fuente concreta, fecha, licencia del audiovisual, modelo y revisión de configuración. Una receta de resortes no puede heredarse por coincidencia de color o marca.

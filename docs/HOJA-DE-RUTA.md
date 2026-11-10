@@ -7,7 +7,7 @@ Creador local, editor, biblioteca pequeña, múltiples equipos, validación de i
 ## Límites concretos
 
 1. Un borrador local de trabajo. No hay biblioteca personal con cuenta, OAuth, magic links ni sincronización. “Guardar rutina” explica la limitación y ofrece exportar. No hay topes de exportación ni de historial aparte de almacenamiento/validación de importación; el esquema de respaldo acepta hasta 10,000 sesiones por archivo.
-2. Once de trece fichas tienen videos públicos de Align-Pilates o Pilates Anytime, insertados con el reproductor autorizado. Tríceps sentado y Hundred con rodillas flexionadas mantienen el tutorial específico pendiente. El audio es en inglés y los subtítulos dependen del autor. Las cargas del video no se trasladan al equipo del usuario.
+2. Las trece fichas tienen video público de Align-Pilates, Balanced Body o Pilates Anytime, con carátula del propio video y reproductor solo al pulsarlo. El audio es en inglés y los subtítulos dependen del autor. Las cargas del video no se trasladan al equipo del usuario. Los dibujos de posición son esquemas originales, no una grabación.
 3. Inventario estándar documentado para Allegro 2 y modelo identificado IRONSIDE Madera Oak. El inventario y resistencia del IRONSIDE se aportan por usuario; la página del fabricante no los detalla. Ningún modelo recibe una receta automática de resortes.
 4. El catálogo no cubre todos los grupos con la misma profundidad. Puede producir sesiones más cortas que la solicitud, informando la duración real. No rellena con ejercicios inventados.
 5. El analizador español interpreta un conjunto explícito de patrones, no toda expresión natural. No infiere diagnósticos ni restricciones clínicas. Las modificaciones se resuelven conservadoramente.

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { allExercises, allegro2Machine, customMachine, exerciseById, ironsideOakMachine } from '../data/catalog';
+import { allExercises, allegro2Machine, customMachine, exerciseById, exercises, ironsideOakMachine } from '../data/catalog';
 import { addExercise, assignMachine, exerciseTrainingIssues, generateRoutine, itemDuration, parseRequest, replaceExercise, routineDuration, trainingIssues } from './engine';
 import { defaultProfile, type Configuration, type Routine, type RoutineItem } from './schema';
 import { springDifference, springTensionN, validateConfiguration } from './springs';
@@ -19,7 +19,7 @@ describe('Analizador y generador determinista',()=>{
   it('recalcula la duración al cambiar series y contempla ambos lados',()=>{const r=shortRoutine();const i=r.items[0];const original=routineDuration(r);i.sets++;expect(routineDuration(r)).toBe(original+i.seconds+i.rest);const bilateral:RoutineItem={...i,sets:2,sides:2,seconds:40,rest:15,transition:20};expect(itemDuration(bilateral)).toBe(225);});
   it('sustituye únicamente un movimiento sin perder la sesión',()=>{const r=generateRoutine('Cuerpo completo',defaultProfile);const item=r.items.find(i=>i.phase==='Práctica')!;const updated=replaceExercise(r,item.id,defaultProfile);expect(updated.items.find(i=>i.id===item.id)?.exerciseId).not.toBe(item.exerciseId);expect(updated.items.filter(i=>i.id!==item.id)).toEqual(r.items.filter(i=>i.id!==item.id));});
   it('añade movimientos antes del enfriamiento',()=>{const r=shortRoutine();r.items.at(-1)!.phase='Vuelta a la calma';const a=addExercise(r,'footwork-heels');expect(a.items.at(-1)?.phase).toBe('Vuelta a la calma');expect(a.items.at(-2)?.exerciseId).toBe('footwork-heels');});
-  it('conserva instrucciones cuando no hay video',()=>{expect(allExercises.every(e=>e.steps.length>0)).toBe(true);expect(allExercises.filter(e=>e.video.status==='enlace verificado')).toHaveLength(11);expect(exerciseById('triceps').video.status).toBe('sin demostración');});
+  it('conserva instrucciones y un video verificado en cada ficha de Reformer',()=>{expect(allExercises.every(e=>e.steps.length>0)).toBe(true);expect(exercises.every(e=>e.video.status==='enlace verificado'&&e.video.youtubeId)).toBe(true);expect(exercises).toHaveLength(13);expect(exerciseById('triceps').video.youtubeId).toBe('Erl0o3VseOU');expect(exerciseById('hundred').video.youtubeId).toBe('akFkx5vzXgs');expect(exerciseById('triceps').video.attribution).toContain('Balanced Body');expect(exerciseById('hundred').video.attribution).toContain('Align-Pilates');});
 });
 describe('Compatibilidad de resortes',()=>{
   it('registra IRONSIDE sin inventar resistencia ni inventario del fabricante',()=>{const m=ironsideOakMachine();expect(m.manufacturer).toBe('IRONSIDE');expect(m.springs).toEqual([]);expect(m.inventoryConfirmed).toBe(false);expect(m.accessories).toContain('Correas');});

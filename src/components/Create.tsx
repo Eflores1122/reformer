@@ -1,8 +1,10 @@
 import { ArrowUpRight, Check, ChevronDown, SlidersHorizontal } from 'lucide-react';
 import { useState } from 'react';
+import { exercises } from '../data/catalog';
 import type { Machine, Muscle, Profile } from '../domain/schema';
 import { EquipmentDrawing } from './EquipmentDrawing';
-import { Field } from './ui';
+import { ExerciseFigure } from './ExerciseFigure';
+import { Field, Reveal } from './ui';
 
 const starters = [
   { name: 'Generar 25 min de pecho y glúteos', meta: '25 min', request: 'Pecho y glúteos durante 25 minutos para principiantes' },
@@ -10,13 +12,22 @@ const starters = [
   { name: 'Generar 30 min de cuerpo completo', meta: '30 min', request: 'Cuerpo completo durante 30 minutos' }
 ];
 
-export function Create({profile,machine,generate,openEquipment,updateProfile}: {profile:Profile;machine?:Machine;generate:(input:string,targets:Muscle[])=>void;openEquipment:()=>void;updateProfile:(p:Profile)=>void}) {
+export function Create({profile,machine,generate,openEquipment,updateProfile,openExercise}: {profile:Profile;machine?:Machine;generate:(input:string,targets:Muscle[])=>void;openEquipment:()=>void;updateProfile:(p:Profile)=>void;openExercise:(id:string)=>void}) {
   const [input,setInput]=useState(''); const [targets,setTargets]=useState<Muscle[]>(profile.priorities); const [more,setMore]=useState(false);
   const groups:Muscle[]=['Glúteos','Pecho','Espalda','Core','Cuádriceps','Hombros','Bíceps','Tríceps'];
   const toggle=(m:Muscle)=>setTargets(v=>v.includes(m)?v.filter(x=>x!==m):[...v,m]);
   return <div className="create-layout">
-    <section className="create-workspace">
+    <section className="studio-band">
       <div className="page-intro"><h1>Tu sesión</h1><p>Describe el foco y los minutos. El generador local usa 13 movimientos documentados, el nivel del perfil y el tiempo que elijas.</p></div>
+      <Reveal className="studio-stage">
+        <div className="studio-cycle" aria-hidden="true">
+          <ExerciseFigure id="footwork-heels" phase="start" decorative />
+          <ExerciseFigure id="footwork-heels" phase="end" decorative className="phase-end" />
+        </div>
+        <p className="studio-caption">Footwork en talones, inicio y final. Dibujo original.</p>
+      </Reveal>
+    </section>
+    <section className="create-workspace">
       <form onSubmit={e=>{e.preventDefault();generate(input,targets);}}>
         <label className="request-label" htmlFor="request">Tu intención de hoy</label>
         <div className="request-box"><textarea id="request" maxLength={1000} value={input} onChange={e=>setInput(e.target.value)} placeholder="Quiero trabajar pecho y glúteos durante 25 minutos."/><span>Se interpreta en tu dispositivo</span></div>
@@ -42,6 +53,10 @@ export function Create({profile,machine,generate,openEquipment,updateProfile}: {
       <button className="secondary full" onClick={openEquipment}>{machine?'Revisar mi equipo':'Configurar mi Reformer'}<ArrowUpRight size={17}/></button>
       <div className="practice-note"><div><strong>El color no se transfiere entre marcas.</strong><p>Un rojo de Balanced Body no equivale al de otro fabricante. El inventario parte de tu máquina.</p></div></div>
     </aside>
+    <section className="movement-rail">
+      <div className="row spread"><h2>Los 13 movimientos</h2><span className="muted">Abre la ficha para ver inicio, final y video</span></div>
+      <div className="movement-rail-track">{exercises.map(e => <button type="button" key={e.id} onClick={() => openExercise(e.id)}><ExerciseFigure id={e.id} phase="start" decorative /><span>{e.name}</span></button>)}</div>
+    </section>
     <section className="quick-practices"><h2>Textos de ejemplo</h2><ul className="quick-list">{starters.map(p=><li key={p.name}><button type="button" onClick={()=>{setInput(p.request);generate(p.request,[]);}}>{p.name}<span>{p.meta}</span></button></li>)}</ul></section>
   </div>;
 }

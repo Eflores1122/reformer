@@ -83,7 +83,7 @@ export const initialState: AppState = { schemaVersion: 1, profile: defaultProfil
 export type Exercise = {
   id: string; name: string; en: string; aliases: string[]; level: Level;
   primary: Muscle[]; secondary: Muscle[]; pattern: string; position: string;
-  equipment: 'suelo' | 'reformer'; accessories: string[]; bilateral: boolean;
+  equipment: 'suelo' | 'reformer'; drive?: 'carro' | 'correas'; accessories: string[]; bilateral: boolean;
   description: string; setup: string; steps: string[]; breath: string;
   cues: string[]; errors: string[]; easier: string; harder: string;
   precautions: string[]; avoidTags: string[]; sourceId: string; sourcePage?: number;
