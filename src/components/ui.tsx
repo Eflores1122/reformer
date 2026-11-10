@@ -1,4 +1,4 @@
-import { useEffect, useRef, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { X } from 'lucide-react';
 
 export function Field({ label, children, hint }: {label: string; children: ReactNode; hint?: string}) {
@@ -15,6 +15,29 @@ export function Modal({ title, children, close, wide=false }: {title: string; ch
 }
 export function Empty({title, children, action}: {title: string; children: ReactNode; action?: ReactNode}) {
   return <div className="empty"><h2>{title}</h2><p>{children}</p>{action}</div>;
+}
+export function Reveal({ children, className = '' }: { children: ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [on, setOn] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setOn(true); return; }
+    const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { setOn(true); observer.disconnect(); } }, { threshold: 0.18 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  return <div ref={ref} className={`reveal ${on ? 'is-in' : ''} ${className}`.trim()}>{children}</div>;
+}
+export function useReducedMotion() {
+  const [reduced, setReduced] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const onChange = () => setReduced(media.matches);
+    media.addEventListener('change', onChange);
+    return () => media.removeEventListener('change', onChange);
+  }, []);
+  return reduced;
 }
 export const formatTime = (seconds: number) => `${Math.floor(Math.max(0,seconds)/60).toString().padStart(2,'0')}:${Math.floor(Math.max(0,seconds)%60).toString().padStart(2,'0')}`;
 export const minutes = (seconds:number) => Math.round(seconds/60*10)/10;

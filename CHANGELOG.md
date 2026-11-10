@@ -1,5 +1,9 @@
 # Cambios
 
+## 0.1.3, 2026-11-10
+
+Cada ficha de Reformer muestra el inicio y el final con un dibujo original, y un video que responde en oEmbed. Extensión de brazos sentado usa la serie de brazos sentados de Balanced Body. Hundred con rodillas flexionadas usa The Hundreds Series de Align-Pilates, hasta el capítulo de rotación lateral. La biblioteca filtra por zona y por carro o correas. La ficha enseña las muestras de color del inventario registrado. El temporizador y la rutina muestran el dibujo del movimiento en curso.
+
 ## 0.1.2, 2026-11-10
 
 Separa la cita de los resortes Allegro 2. La ficha del modelo publica 3 rojos, 1 azul y 1 amarillo. Los nombres cualitativos (rojo media, azul ligera, amarillo muy ligera) salen de la ficha Signature Springs, revisada de nuevo el 2026-11-10 junto con los manuales, el video y la ficha IRONSIDE. Esas páginas siguen respondiendo.

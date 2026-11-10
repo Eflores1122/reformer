@@ -7,11 +7,11 @@ Una aplicación abierta para crear, editar y seguir una práctica de Pilates Ref
 
 ## Estado de esta versión
 
-Versión funcional 0.1.2. La primera pantalla es el creador de rutinas. Puedes explorar, generar propuestas, editar y entrenar sin cuenta. El análisis de solicitudes se ejecuta localmente mediante reglas en español.
+Versión funcional 0.1.3. La primera pantalla es el creador de rutinas, con el esquema del Footwork y una fila de los 13 movimientos. Puedes explorar, generar propuestas, editar y entrenar sin cuenta. El análisis de solicitudes se ejecuta localmente mediante reglas en español.
 
 - Generador sensible a nivel, grupos, tiempo, equipo, accesorios y exclusiones; preparación y vuelta a la calma.
 - Editor con series, repeticiones, tiempos, descansos, transiciones, orden, notas, sustitución, deshacer, rehacer e impresión/PDF del navegador.
-- Trece movimientos de Reformer documentados, cinco preparaciones suaves, instrucciones y fuentes. Once fichas incluyen demostraciones públicas de sus autores; dos mantienen el tutorial pendiente. Los reproductores se cargan solo al elegir reproducir.
+- Trece movimientos de Reformer documentados, cinco preparaciones suaves, instrucciones y fuentes. Cada ficha tiene un dibujo original del inicio y del final, y un video público de Align-Pilates, Balanced Body o Pilates Anytime. El reproductor se carga solo al elegir reproducir. La carátula es la miniatura de ese video.
 - Múltiples máquinas con inventarios separados. Perfiles de IRONSIDE Reformer Madera Oak, Allegro 2 con Signature Springs y modelos personalizados. Allegro 2 parte de 3 rojos, 1 azul y 1 amarillo (ficha del modelo) y de los nombres cualitativos de la ficha Signature Springs. El inventario del IRONSIDE se registra con datos del usuario porque el fabricante no publica cantidades ni fuerzas por color.
 - Configuraciones por máquina y ejercicio, cantidades físicas, confirmación del usuario e invalidación al cambiar el equipo. No hay prescripción automática de colores ni equivalencias en kg.
 - Entrenamiento con reloj por marcas temporales, pausa, series reales, repeticiones, esfuerzo, control, configuración efectiva, omisiones y reanudación.
@@ -22,6 +22,12 @@ Versión funcional 0.1.2. La primera pantalla es el creador de rutinas. Puedes e
 El borrador y los registros son locales. Siguiendo la directiva guest-first, “Guardar rutina” explica que la biblioteca de cuenta y la sincronización **aún no están configuradas** y permite exportar. No hay un registro simulado ni proveedores OAuth sin configurar. Se pueden exportar tantas rutinas como se desee; esta versión conserva un borrador de trabajo a la vez.
 
 La documentación del movimiento no equivale a validación individual. Puedes entrar al entrenamiento y comenzar la preparación sin completar todos los ajustes. Antes de iniciar cada movimiento en el Reformer debes confirmar su inventario y ajustes aprendidos con un instructor. Las necesidades de modificación se filtran conservadoramente, sin diagnosticar ni prescribir rehabilitación.
+
+## Medios
+
+Los dibujos de posición son SVG originales de este repositorio, con la misma figura y la misma vista en las 13 fichas. Van dentro de la aplicación, así que el service worker los guarda con el shell. No hay fotos de stock ni archivos WebP propios: un trazado no gana nada al rasterizarse.
+
+Los videos no se descargan. Se abren en `youtube-nocookie`, sin reproducción automática, después de pulsar el botón. La lista de canales, identificadores y la comprobación oEmbed está en [CREDITS.md](CREDITS.md). Esas carátulas y esos reproductores necesitan red. Sin conexión siguen el dibujo, el texto, el temporizador y los datos locales.
 
 ## Desarrollo
 
@@ -60,7 +66,7 @@ Tras una primera visita completa en línea, el shell, fuentes, biblioteca e inst
 - [Fuentes y revisión](docs/FUENTES.md)
 - [Validación y casos de aceptación](docs/PRUEBAS.md)
 - [Limitaciones y hoja de ruta](docs/HOJA-DE-RUTA.md)
-- [Privacidad](PRIVACY.md), [contribución](CONTRIBUTING.md), [cambios](CHANGELOG.md), [atribuciones](THIRD_PARTY_NOTICES.md)
+- [Privacidad](PRIVACY.md), [contribución](CONTRIBUTING.md), [cambios](CHANGELOG.md), [medios](CREDITS.md), [atribuciones](THIRD_PARTY_NOTICES.md)
 
 El nombre REFORMER es descriptivo y provisional para este proyecto independiente. No se ha realizado una búsqueda exhaustiva de anterioridades de marca ni se afirma exclusividad. No hay afiliación con los fabricantes o aplicaciones investigados.
 
