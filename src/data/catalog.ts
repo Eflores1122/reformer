@@ -2,10 +2,11 @@ import type { Exercise, Machine } from '../domain/schema';
 import { exerciseVideos } from './videos';
 
 export const sources = {
-  allegro: { title: 'Balanced Body · Manual Allegro, edición 2024-05', url: 'https://s3.amazonaws.com/s3.pilates.com/resources/10896_AllegroA1b_CE_CompleteManual_web_5_9_24.pdf', checked: '2026-11-07' },
-  arms: { title: 'Balanced Body · Studio Reformer con torre, trabajo de brazos', url: 'https://s3.amazonaws.com/s3.pilates.com/resources/instructions/400-350_CE_StudioReformerWithTower_SPTB_English.pdf', checked: '2026-11-07' },
-  safety: { title: 'Balanced Body · Reformer Usage Safety Guide', url: 'https://s3.amazonaws.com/s3.pilates.com/resources/instructions/Reformer%20Usage%20Safety%20Guide%2012-20-23pdf.pdf', checked: '2026-11-07' },
-  allegro2: { title: 'Balanced Body · Allegro 2, ficha del fabricante', url: 'https://www.pilates.com/products/allegro-2-pilates-reformer', checked: '2026-11-07' }
+  allegro: { title: 'Balanced Body · Manual Allegro, edición 2024-05', url: 'https://s3.amazonaws.com/s3.pilates.com/resources/10896_AllegroA1b_CE_CompleteManual_web_5_9_24.pdf', checked: '2026-11-10' },
+  arms: { title: 'Balanced Body · Studio Reformer con torre, trabajo de brazos', url: 'https://s3.amazonaws.com/s3.pilates.com/resources/instructions/400-350_CE_StudioReformerWithTower_SPTB_English.pdf', checked: '2026-11-10' },
+  safety: { title: 'Balanced Body · Reformer Usage Safety Guide', url: 'https://s3.amazonaws.com/s3.pilates.com/resources/instructions/Reformer%20Usage%20Safety%20Guide%2012-20-23pdf.pdf', checked: '2026-11-10' },
+  allegro2: { title: 'Balanced Body · Allegro 2, ficha del fabricante', url: 'https://www.pilates.com/products/allegro-2-pilates-reformer', checked: '2026-11-10' },
+  springs: { title: 'Balanced Body · Signature Springs, resistencia por color', url: 'https://www.pilates.com/products/pilates-reformer-signature-springs/', checked: '2026-11-10' }
 };
 export type SourceId = keyof typeof sources;
 const base: Pick<Exercise, 'aliases' | 'bilateral' | 'review' | 'video' | 'accessories' | 'avoidTags'> = {
@@ -90,7 +91,7 @@ const floorBase = { ...base, equipment: 'suelo' as const, level: 'principiante' 
   precautions: ['Detente ante dolor, mareo o dificultad para respirar.'], sourceId: 'safety', review: 'pendiente de revisión profesional' as const
 };
 export const preparation: Exercise[] = [
-  { ...floorBase, id: 'breath', name: 'Respiración y postura', en: 'Breath and posture', primary: ['Core'], steps: ['Siéntate con apoyo cómodo.', 'Respira sin esfuerzo y relaja los hombros.'] },
+  { ...floorBase, id: 'breath', name: 'Respiración y postura', en: 'Breath and posture', primary: ['Core'], steps: ['Siéntate con apoyo cómodo.', 'Respira con naturalidad y relaja los hombros.'] },
   { ...floorBase, id: 'shoulders', name: 'Movilidad de hombros', en: 'Shoulder preparation', primary: ['Hombros', 'Movilidad'], steps: ['Haz círculos pequeños con los hombros.', 'Añade alcances suaves al frente.'], avoidTags: ['hombro'] },
   { ...floorBase, id: 'hips', name: 'Movilidad de cadera', en: 'Hip preparation', primary: ['Cadera', 'Movilidad'], bilateral: true, steps: ['Sentado, eleva suavemente una rodilla.', 'Apoya y repite al otro lado.'], avoidTags: ['cadera'] },
   { ...floorBase, id: 'ankles', name: 'Movilidad de tobillos', en: 'Ankle preparation', primary: ['Pantorrillas', 'Movilidad'], bilateral: true, steps: ['Sentado, alterna punta y talón.', 'Repite con el otro pie sin forzar.'], avoidTags: ['tobillo'] },
@@ -108,12 +109,13 @@ export function allegro2Machine(): Machine {
       { id: 'bb-red', label: 'Rojo', color: '#b24d52', count: 3, relative: 'media', initialN: null, stiffnessNm: null },
       { id: 'bb-blue', label: 'Azul', color: '#5675a1', count: 1, relative: 'ligera', initialN: null, stiffnessNm: null },
       { id: 'bb-yellow', label: 'Amarillo', color: '#b48a25', count: 1, relative: 'muy ligera', initialN: null, stiffnessNm: null }
-    ], accessories: ['Correas'], springbar: '', pulleys: '', footbar: '', notes: '',
-    source: sources.allegro2.url, checkedAt: '2026-11-07', inventoryConfirmed: false, validation: 'inventario documentado', settings: {} };
+    ], accessories: ['Correas'], springbar: '', pulleys: '', footbar: '',
+    source: sources.allegro2.url, checkedAt: '2026-11-10', inventoryConfirmed: false, validation: 'inventario documentado', settings: {},
+    notes: 'Cantidades en la ficha Allegro 2: 3 rojos, 1 azul y 1 amarillo. La ficha Signature Springs nombra el rojo como media, el azul como ligera y el amarillo como muy ligera. Esas fichas no publican newtons.' };
 }
 export function customMachine(): Machine {
   return { ...allegro2Machine(), name: 'Mi Reformer', manufacturer: 'Otro', model: 'Personalizado', source: '', validation: 'usuario',
-    springs: [{ id: crypto.randomUUID(), label: 'Resorte 1', color: '#7b818c', count: 1, relative: 'sin verificar', initialN: null, stiffnessNm: null }], accessories: [] };
+    springs: [{ id: crypto.randomUUID(), label: 'Resorte 1', color: '#7b818c', count: 1, relative: 'sin verificar', initialN: null, stiffnessNm: null }], accessories: [], notes: '' };
 }
 export function ironsideOakMachine(): Machine {
   return { ...customMachine(), name:'Mi IRONSIDE Oak', manufacturer:'IRONSIDE', model:'Reformer Madera Oak',

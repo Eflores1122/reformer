@@ -1,13 +1,13 @@
 # Dirección visual y movimiento
 
-El creador es la primera pantalla. La composición asimétrica une una superficie de escritura con una vista técnica funcional del equipo. No contiene hero promocional, precios, testimonios ni actividad ficticia.
+El creador es la primera pantalla. A la izquierda está el formulario que arma la rutina. A la derecha, el esquema del Reformer activo. No hay hero, precios, testimonios ni actividad ficticia.
 
-Tokens principales: fondo frío `#f7f8fa`, superficie blanca `#ffffff`, texto `#263b40`, secundario `#586a70`, petróleo `#254b51`, verde suave `#dceae6`. Durazno y lavanda distinguen accesos rápidos; no codifican resistencia. Manrope aporta títulos y números; DM Sans sostiene texto y formularios. Las fuentes están incluidas bajo OFL.
+Un solo acento, petróleo `#254b51`, porque es el color del marco en el esquema del equipo. El fondo es `#f7f8fa`, la superficie `#ffffff` y el texto `#263b40`. El verde `#dceae6` es la misma tinta aclarada, para la selección y los avisos, no un segundo acento. El rojo de error y los colores de resorte son datos: el resorte se pinta con el color que registró el usuario. No hay durazno, lavanda ni cajas teñidas en rotación.
 
-El rasgo propio es un esquema vectorial del Reformer: muestra carro, barra, inventario y resortes seleccionados al editar una configuración. Los esquemas de posición humana son originales y están identificados como orientativos, sin presentarse como demostraciones técnicas.
+Manrope (OFL, variable, incluida en la aplicación) lleva títulos y el número del temporizador: tiene un rango amplio de peso y se lee bien en cifras grandes. DM Sans (OFL, variable, también incluida) lleva texto y formularios a 13 y 16 px. No son Inter, Roboto, Poppins, Montserrat, Playfair ni Space Grotesk. El monospace no se usa como decoración.
 
-La transición de pantallas dura 280 ms. El carro introduce la relación espacial en una entrada breve; las confirmaciones, cambios de chips y ventanas responden a una acción. No hay movimiento decorativo continuo. `prefers-reduced-motion` deshabilita animaciones y transiciones. Se conservan controles textuales para ordenar ejercicios.
+La marca en la interfaz es el wordmark `reformer.` El icono instalable repite esas dos letras sobre el petróleo, sin mascota. El esquema vectorial del carro sigue en la pantalla de creación y en el editor de ajustes: muestra inventario y resortes seleccionados. Los esquemas de posición humana son originales y están marcados como orientativos.
 
-En móvil, el creador queda primero, seguido de accesos y equipo. La barra inferior contiene cuatro destinos y Más; los demás destinos se mantienen a un toque. Los dialogs nativos atrapan foco, permiten Escape y devuelven el foco al control anterior. Se ofrecen tema claro/oscuro, etiquetas de resorte junto al color y estados sin depender solo del color.
+El radio de la interfaz es 4 px en botones, campos, tarjetas y ventanas. El anillo del temporizador y la muestra de color de cada resorte son círculos porque representan el reloj y el resorte, no un segundo radio de componente. Las sombras son de 1 px, neutras. Los diálogos usan un velo sólido, sin desenfoque. No hay punto de estado: una sesión abierta dice «en curso».
 
-La búsqueda de diseño UI/UX propuso un patrón de landing. Se descartó porque contradecía el brief product-first. Se conservaron criterios de foco, contraste, interacción y movimiento reducido; la composición y los tokens se definieron para este producto.
+La transición de pantallas dura 280 ms. El carro entra una vez al dibujar el equipo. `prefers-reduced-motion` anula animaciones y transiciones. En móvil, el formulario queda primero y la barra inferior tiene cuatro destinos más Más. El tema oscuro es un cambio plano de contraste, sin brillo, y se puede volver al claro. El pie enlaza el perfil https://github.com/Eflores1122 y el repositorio.

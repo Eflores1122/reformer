@@ -11,14 +11,14 @@ import { exerciseVideos } from '../data/videos';
 type Props={routine:Routine|null;machine?:Machine;change:(r:Routine)=>void;undo:()=>void;redo:()=>void;canUndo:boolean;canRedo:boolean;create:()=>void;blank:()=>void;start:()=>void;save:()=>void;exportRoutine:()=>void;detail:(id:string)=>void;config:(itemId:string)=>void;replace:(id:string)=>void;add:(id:string)=>void};
 export function RoutineEditor(p:Props) {
   const [addId,setAddId]=useState('');
-  if(!p.routine) return <Empty title="Dale forma a tu próxima sesión" action={<div className="row wrap centered"><button className="primary" onClick={p.create}>Crear mi rutina<ArrowUpRight size={18}/></button><button className="secondary" onClick={p.blank}><FilePlus2 size={18}/>Crear desde cero</button></div>}>Cuéntanos qué quieres entrenar o elige tus ejercicios uno a uno.</Empty>;
+  if(!p.routine) return <Empty title="Sin borrador" action={<div className="row wrap centered"><button className="primary" onClick={p.create}>Crear mi rutina<ArrowUpRight size={18}/></button><button className="secondary" onClick={p.blank}><FilePlus2 size={18}/>Crear desde cero</button></div>}>Escribe una intención en Crear, o arma la lista movimiento por movimiento.</Empty>;
   const r=p.routine;
   const pending=r.items.filter(i=>exerciseTrainingIssues(i,p.machine).length);
   const warnings=r.warnings.filter(w=>!w.startsWith('Propuesta preliminar:'));
   const edit=(id:string,patch:Partial<RoutineItem>)=>p.change({...r,items:r.items.map(i=>i.id===id?{...i,...patch}:i)});
   const move=(index:number,direction:number)=>{const items=[...r.items];const target=index+direction;if(target<0||target>=items.length)return;[items[index],items[target]]=[items[target],items[index]];p.change({...r,items});};
   return <section className="routine-editor">
-    <div className="page-heading"><div><p className="section-label">Tu borrador de práctica</p><h1>{r.title}</h1><p className="muted">{r.level} <span className="divider-dot"/> {p.machine?.name||'Equipo por configurar'}</p></div><div className="row wrap"><button className="secondary" onClick={p.exportRoutine}><Download size={17}/>Exportar</button><button className="primary" onClick={p.save}><Save size={17}/>Guardar rutina</button></div></div>
+    <div className="page-heading"><div><h1>{r.title}</h1><p className="muted">{r.level} <span className="divider-dot"/> {p.machine?.name||'Equipo por configurar'}</p></div><div className="row wrap"><button className="secondary" onClick={p.exportRoutine}><Download size={17}/>Exportar</button><button className="primary" onClick={p.save}><Save size={17}/>Guardar rutina</button></div></div>
     <div className="routine-overview"><div><Clock3 size={20}/><strong data-testid="routine-duration">{minutes(routineDuration(r))} min</strong><span>estimados, con descansos y transiciones</span></div><span>{r.items.length} movimientos</span></div>
     {warnings.length>0&&<details className="routine-warnings" open={false}><summary>Notas de tu sesión<span>{warnings.length}</span></summary><ul>{warnings.map(w=><li key={w}>{w}</li>)}</ul></details>}
     <div className="routine-equipment-status"><div><strong>{p.machine?`${p.machine.name} · equipo registrado`:'Rutina lista para explorar'}</strong><p>{p.machine?`${p.machine.springs.reduce((n,s)=>n+s.count,0)} resortes registrados. `:'Puedes ver los videos y editar tu rutina sin registrar equipo. '}{pending.length?`${pending.length} movimientos tienen ajustes pendientes. Puedes confirmarlos al llegar a cada uno.`:'Los ajustes de tu práctica están listos.'}</p></div>{p.machine&&pending[0]&&<button className="secondary" onClick={()=>p.config(pending[0].id)}>Revisar primer ajuste</button>}</div>
@@ -26,7 +26,7 @@ export function RoutineEditor(p:Props) {
     <div className="routine-items">{r.items.map((item,index)=>{
       const e=exerciseById(item.exerciseId); const issues=e.equipment==='reformer'?validateConfiguration(p.machine,item.configuration):[];
       return <div key={item.id} className={`routine-item phase-${item.phase==='Práctica'?'main':item.phase==='Preparación'?'warm':'cool'}`}>
-        {(index===0||r.items[index-1].phase!==item.phase)&&<div className="phase-label"><span/>{item.phase}</div>}
+        {(index===0||r.items[index-1].phase!==item.phase)&&<div className="phase-label">{item.phase}</div>}
         <div className="item-line"><span className="item-number">{String(index+1).padStart(2,'0')}</span><div className="item-title"><button className="title-button" onClick={()=>p.detail(e.id)}>{e.name}</button><p>{e.primary.join(', ')} <span className="divider-dot"/>{e.position}</p></div><span className="item-duration">{minutes(itemDuration(item))} min</span><div className="move-buttons"><button className="icon-button" aria-label={`Subir ${e.name}`} disabled={index===0} onClick={()=>move(index,-1)}><ArrowUp size={16}/></button><button className="icon-button" aria-label={`Bajar ${e.name}`} disabled={index===r.items.length-1} onClick={()=>move(index,1)}><ArrowDown size={16}/></button></div></div>
         {exerciseVideos[e.id]&&<details className="item-video"><summary><Play size={14}/>Ver video · {e.name}</summary><ExerciseVideo exercise={e} compact/></details>}
         <details className="item-details"><summary><span>{item.sets} {item.sets===1?'serie':'series'}{item.reps>0?` × ${item.reps} rep.`:` × ${item.seconds} s`}{item.sides===2?' · ambos lados':''}</span><span className={issues.length?'pending-text':'muted'}>{e.equipment==='reformer'?springLabel(p.machine,item.configuration):'Fuera del equipo'}<Settings2 size={14}/></span></summary>
@@ -38,6 +38,6 @@ export function RoutineEditor(p:Props) {
       </div>;
     })}</div>
     <div className="add-exercise"><select aria-label="Ejercicio para añadir" value={addId} onChange={e=>setAddId(e.target.value)}><option value="">Añadir otro movimiento…</option>{allExercises.map(e=><option key={e.id} value={e.id}>{e.name} · {e.level}</option>)}</select><button className="secondary" disabled={!addId} onClick={()=>{p.add(addId);setAddId('');}}><Plus size={18}/>Añadir</button></div>
-    <div className="start-bar"><div><strong>Practica con atención.</strong><p>Si aparece dolor agudo, detén el ejercicio.</p></div><button className="primary" disabled={!r.items.length} onClick={p.start}><Play size={18}/>Preparar entrenamiento</button></div>
+    <div className="start-bar"><div><strong>Confirma el ajuste de cada movimiento.</strong><p>Si aparece dolor agudo, detén el ejercicio.</p></div><button className="primary" disabled={!r.items.length} onClick={p.start}><Play size={18}/>Preparar entrenamiento</button></div>
   </section>;
 }

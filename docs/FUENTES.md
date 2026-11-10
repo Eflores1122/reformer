@@ -1,13 +1,14 @@
 # Fuentes y revisión
 
-Consulta inicial: 2026-11-07. Los enlaces llevan a material de los fabricantes; no se incluyen sus fotografías, videos ni manuales dentro de la app. Las instrucciones son resúmenes originales y breves, no una copia del manual.
+Consulta inicial: 2026-11-07. Revisión de enlaces: 2026-11-10. Los enlaces llevan a material de los fabricantes; no se incluyen sus fotografías, videos ni manuales dentro de la app. Las instrucciones son resúmenes originales y breves, no una copia del manual.
 
 | Fuente | Uso y alcance |
 | --- | --- |
 | [Balanced Body Allegro, manual 10896C, 2024-05](https://s3.amazonaws.com/s3.pilates.com/resources/10896_AllegroA1b_CE_CompleteManual_web_5_9_24.pdf) | Revisado en PDF descargado temporalmente para extraer información. Footwork/Running PDF p.35; Hundred p.37; pies en correas p.41; Pulling Straps p.42; Pelvic Lift p.44; brazos p.45. No se transfieren sus números de resortes a Allegro 2 u otras máquinas |
 | [Studio Reformer con torre, trabajo de brazos](https://s3.amazonaws.com/s3.pilates.com/resources/instructions/400-350_CE_StudioReformerWithTower_SPTB_English.pdf) | Referencia de Serve a Tray y Hug a Tree, p.22. Se conserva posición sentada; no se introduce de rodillas como variante principiante |
 | [Reformer Usage Safety Guide](https://s3.amazonaws.com/s3.pilates.com/resources/instructions/Reformer%20Usage%20Safety%20Guide%2012-20-23pdf.pdf) | Guía general y existencia de Bridging. La ficha de puente se marca pendiente de revisión profesional; no se deduce una receta de carga de la imagen |
-| [Allegro 2, ficha oficial](https://www.pilates.com/products/allegro-2-pilates-reformer) | Inventario estándar Signature Springs: tres rojos medios, un azul ligero y un amarillo muy ligero. El usuario confirma su equipo; otras generaciones y DURO no se consideran verificadas por este preset |
+| [Allegro 2, ficha oficial](https://www.pilates.com/products/allegro-2-pilates-reformer) | Inventario estándar: 3 resortes rojos, 1 azul y 1 amarillo. Revisado el 2026-11-10. La ficha no asigna nombres de resistencia |
+| [Signature Springs, ficha oficial](https://www.pilates.com/products/pilates-reformer-signature-springs/) | Nombres cualitativos del fabricante: amarillo very light, azul light, rojo medium, verde heavy. El preset Allegro 2 traduce esos tres primeros a muy ligera, ligera y media. No publica newtons. El verde no entra en el inventario estándar de Allegro 2. El usuario confirma su equipo; otras generaciones y DURO no se consideran verificadas por este preset |
 
 Los ejercicios de preparación fuera del aparato son propuestas suaves originales. La guía de seguridad sirve como contexto, no como una supuesta fuente que verifique esas secuencias. Su estado de revisión profesional permanece pendiente.
 

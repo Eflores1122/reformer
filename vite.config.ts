@@ -10,7 +10,7 @@ export default defineConfig({
     registerType: 'prompt',
     includeAssets: ['icon.svg', 'icon-192.png', 'icon-512.png'],
     manifest: {
-      id: base, name: 'REFORMER — Tu práctica', short_name: 'REFORMER',
+      id: base, name: 'REFORMER. Tu práctica', short_name: 'REFORMER',
       description: 'Crea y sigue tu práctica de Pilates Reformer. Tus datos permanecen en tu dispositivo.',
       lang: 'es', start_url: base, scope: base, display: 'standalone',
       background_color: '#f7f8fa', theme_color: '#254b51',
