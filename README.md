@@ -7,12 +7,12 @@ Una aplicación abierta para crear, editar y seguir una práctica de Pilates Ref
 
 ## Estado de esta versión
 
-Versión funcional 0.1.1. La primera pantalla es el creador de rutinas. Puedes explorar, generar propuestas, editar y entrenar sin cuenta. El análisis de solicitudes se ejecuta localmente mediante reglas en español.
+Versión funcional 0.1.2. La primera pantalla es el creador de rutinas. Puedes explorar, generar propuestas, editar y entrenar sin cuenta. El análisis de solicitudes se ejecuta localmente mediante reglas en español.
 
 - Generador sensible a nivel, grupos, tiempo, equipo, accesorios y exclusiones; preparación y vuelta a la calma.
 - Editor con series, repeticiones, tiempos, descansos, transiciones, orden, notas, sustitución, deshacer, rehacer e impresión/PDF del navegador.
 - Trece movimientos de Reformer documentados, cinco preparaciones suaves, instrucciones y fuentes. Once fichas incluyen demostraciones públicas de sus autores; dos mantienen el tutorial pendiente. Los reproductores se cargan solo al elegir reproducir.
-- Múltiples máquinas con inventarios separados. Perfiles de IRONSIDE Reformer Madera Oak, Allegro 2 con Signature Springs y modelos personalizados. El inventario del IRONSIDE se registra con datos del usuario porque el fabricante no publica cantidades ni fuerzas por color.
+- Múltiples máquinas con inventarios separados. Perfiles de IRONSIDE Reformer Madera Oak, Allegro 2 con Signature Springs y modelos personalizados. Allegro 2 parte de 3 rojos, 1 azul y 1 amarillo (ficha del modelo) y de los nombres cualitativos de la ficha Signature Springs. El inventario del IRONSIDE se registra con datos del usuario porque el fabricante no publica cantidades ni fuerzas por color.
 - Configuraciones por máquina y ejercicio, cantidades físicas, confirmación del usuario e invalidación al cambiar el equipo. No hay prescripción automática de colores ni equivalencias en kg.
 - Entrenamiento con reloj por marcas temporales, pausa, series reales, repeticiones, esfuerzo, control, configuración efectiva, omisiones y reanudación.
 - Historial, actividad semanal, distribución muscular y una regla transparente de progresión sin cambios automáticos de resortes.
