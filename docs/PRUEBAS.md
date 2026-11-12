@@ -1,6 +1,6 @@
 # Validación
 
-Checkpoint inicial: 2026-11-07. Node 26.8.2 en macOS; CI configurado en Node 24. Compilación estricta TypeScript + Vite realizada. Vitest: **34 pruebas pasadas**. Playwright/Chromium: **20 escenarios pasados**, diez flujos en escritorio y diez con emulación iPhone 13. El workflow ejecuta ambas suites antes de publicar.
+Checkpoint inicial: 2026-11-07. Node 26.8.2 en macOS; CI configurado en Node 24. Compilación estricta TypeScript + Vite realizada. Vitest: **34 pruebas pasadas**. Playwright/Chromium: **24 pruebas pasadas** el 2026-11-12, doce flujos en escritorio y doce con emulación iPhone 13. El workflow ejecuta ESLint, ambas suites y la compilación antes de publicar.
 
 Los escenarios de configuración usan datos de prueba para comprobar controles; no son recomendaciones de resistencia.
 

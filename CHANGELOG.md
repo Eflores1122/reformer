@@ -1,5 +1,9 @@
 # Cambios
 
+## Documentación y herramientas, 2026-11-12
+
+La aplicación sigue en 0.1.3. El README añade un resumen en inglés, la arquitectura, un ejemplo real del generador, notas de accesibilidad y de privacidad, y capturas tomadas de la propia interfaz. CI ejecuta ESLint además de las pruebas y la compilación. El efecto que lee IndexedDB declara `setState` como dependencia; esa función ya era estable. No hay cambio de catálogo ni de datos.
+
 ## 0.1.3, 2026-11-10
 
 Cada ficha de Reformer muestra el inicio y el final con un dibujo original, y un video que responde en oEmbed. Extensión de brazos sentado usa la serie de brazos sentados de Balanced Body. Hundred con rodillas flexionadas usa The Hundreds Series de Align-Pilates, hasta el capítulo de rotación lateral. La biblioteca filtra por zona y por carro o correas. La ficha enseña las muestras de color del inventario registrado. El temporizador y la rutina muestran el dibujo del movimiento en curso.
